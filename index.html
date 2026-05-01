@@ -230,8 +230,7 @@ if (noteText.trim()) {
 const contactText = `**联系方式**
 Email: [${C.em[0]}@${C.em[1]}](mailto:${C.em[0]}@${C.em[1]})
 Telegram: [@${C.tg}](https://t.me/${C.tg})
-WeChat: [${C.wx}](weixin://)
-Mastodon: [@${C.ms}](https://mastodon.social/@${C.ms.split('@')[1]})`;
+WeChat: [${C.wx}](weixin://)`;
 
 const fmt = t => t
   .replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>')
