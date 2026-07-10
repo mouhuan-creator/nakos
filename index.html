@@ -1,4 +1,4 @@
-p<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
@@ -34,6 +34,7 @@ header {
   user-select: none;
 }
 h1 { font-size: 16px; font-weight: 400; letter-spacing: .02em; color: var(--accent); }
+.header-links { display: flex; gap: 20px; }
 .header-links span {
   font-size: 13px; color: var(--accent); cursor: pointer; transition: opacity .2s;
 }
@@ -134,9 +135,17 @@ footer a:hover { color: var(--accent); text-decoration-color: var(--accent); }
 <header>
   <h1>NakoList</h1>
   <div class="header-links">
+    <span onclick="toggle('mihub')">Mihub</span>
     <span onclick="toggle('contact')">Contact</span>
   </div>
 </header>
+
+<div class="popup" id="mihub">
+  <span class="popup-close" onclick="toggle('mihub')">×</span>
+  <div class="popup-content">
+    <div id="mihubC"></div>
+  </div>
+</div>
 
 <div class="popup" id="contact">
   <span class="popup-close" onclick="toggle('contact')">×</span>
@@ -162,8 +171,13 @@ const S = {
   footerUrl: 'https://github.com/mouhuan-creator/nakolist'
 };
 const noteText = '支持微信支付宝银行卡（包括数币）及部分虚拟货币（详情请私信），支持第三方平台交易（手续费需自付），可PUSH/给转移码;域名WHOIS及相关后缀政策请自行查询;一经售出后概不退款;标询价不代表价格高昂，仅因为我也不知道多少合适，看上了欢迎来撩～回复如若不及时，还请见谅！';
+const mihubText = `米表友链申请见 Contact 中联系方式，提供您的米表名称和链接即可。
+本站信息：
+名称：Nakos，
+地址：https://www.34567888.xyz/
+`;
 const C = {
-  em: ['12','34567888.xyz'],
+  em: ['nameholder','qq.com'],
   tg: 'cold_cute',
   wx: 'REDACTED_FOR_PRIVACY',
   ms: ''
@@ -180,7 +194,7 @@ const domains = [
     name: "34567888.xyz",
     price: "自用",
     intro: "五数顺子+三叠",
-    detail: '米表域名，长期持有。'
+    detail: '比较好记，续费便宜。米表域名，打算长期持有。'
   },
   {
     name: "legs.beauty",
@@ -190,27 +204,27 @@ const domains = [
   },
   {
     name: "6img.cn",
-    price: "288¥",
+    price: "30¥",
     intro: "有图",
-    detail: '精品图床米。.cn最近WHOIS隐私保护免费了，续费仅40/Y。保质期还算长，在爱名。'
+    detail: '限时特惠。精品图床米。.cn最近WHOIS隐私保护免费了，续费仅40r/y，在爱名。'
   },
   {
     name: "ou.ci",
     price: "询价",
     intro: "偶次/藕辞",
-    detail: '漂亮的二字母国别。在趣域，续费约120r/Y'
+    detail: '漂亮的二字母国别。在趣域，续费约120r/y'
   },
   {
     name: "wr.lc",
     price: "询价",
     intro: "温柔旅程",
-    detail: '四声母、二字母国别。在Dynadot，转到Porkbun后续费约130r/Y'
+    detail: '四声母、二字母国别。在Dynadot，转到Porkbun后续费约130r/y'
   },
   {
     name: "26.nz",
     price: "询价",
     intro: "数字26",
-    detail: '二数字国别。在Porkbun，续费约100r/Y'
+    detail: '二数字国别。在Porkbun，续费约100r/y'
   }
 ];
 
@@ -242,6 +256,7 @@ const fmt = t => t
   .replace(/\[(.*?)\]\((.*?)\)/g,'<a href="$2">$1</a>')
   .replace(/\n/g,'<br>');
 
+document.getElementById('mihubC').innerHTML = fmt(mihubText);
 document.getElementById('contactC').innerHTML = fmt(contactText);
 
 const list = document.getElementById('list');
@@ -270,4 +285,4 @@ document.addEventListener('click', e => {
 });
 </script>
 </body>
-</html>
+  </html>
