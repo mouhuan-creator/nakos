@@ -3,175 +3,38 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NakoList</title>
+<title>Nakos</title>
+<meta name="description" content="NakoNakoNako">
 <meta property="og:title" content="Nakos">
-<meta property="og:description" content="Nakos Domain List">
+<meta property="og:description" content="NakoNakoNako">
 <meta property="og:url" content="https://www.34567888.xyz">
-<style>
-:root {
-  --bg: #e8e8e8;
-  --text: #2c2c2c;
-  --muted: #888;
-  --accent: #1a1a1a;
-  --line: #d5d5d5;
-  --link: #b8960c;
-}
-* { margin:0; padding:0; box-sizing:border-box; }
-body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans", sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  font-size: 14px;
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-}
-.container { max-width: 880px; margin: 0 auto; padding: 0 32px; }
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='16' fill='%23ffffff'/><text y='.9em' font-size='80' font-weight='700' font-family='Georgia,serif' text-anchor='middle' dominant-baseline='central' x='50' y='50' fill='%23000000'>N</text></svg>">
 
-header {
-  padding: 24px 0 16px;
-  border-bottom: 1px solid var(--line);
-  display: flex; justify-content: space-between; align-items: baseline;
-  user-select: none;
-}
-h1 { font-size: 16px; font-weight: 400; letter-spacing: .02em; color: var(--accent); }
-.header-links { display: flex; gap: 20px; }
-.header-links span {
-  font-size: 13px; color: var(--accent); cursor: pointer; transition: opacity .2s;
-}
-.header-links span:hover { opacity: .6; }
-
-/* Popup */
-.popup {
-  position: fixed; inset: 0;
-  background: var(--bg);
-  z-index: 100; padding-top: 100px;
-  opacity: 0; pointer-events: none;
-  transition: opacity .2s;
-}
-.popup.active { opacity: 1; pointer-events: auto; }
-.popup-content {
-  max-width: 720px; margin: 0 auto; padding: 32px;
-  font-size: 13px; line-height: 2.2; color: var(--accent);
-}
-.popup-content a { color: var(--accent); text-decoration: underline; text-decoration-color: var(--link); }
-.popup-close {
-  position: absolute; top: 20px; right: 24px;
-  color: var(--muted); font-size: 28px; cursor: pointer;
-  user-select: none; transition: color .2s;
-}
-.popup-close:hover { color: var(--accent); }
-.popup-note {
-  font-size: 13px; color: var(--muted); line-height: 1.7;
-  padding-bottom: 20px; margin-bottom: 20px;
-  border-bottom: 1px solid var(--line);
-}
-
-/* Domain */
-.domain-item { border-bottom: 1px solid var(--line); }
-.domain-header {
-  display: flex; align-items: baseline; justify-content: space-between;
-  padding: 14px 0;
-  cursor: pointer; gap: 16px;
-  user-select: none;
-}
-.domain-main { flex: 1; min-width: 0; }
-.domain-name {
-  font-family: "SF Mono", "Cascadia Code", "Fira Code", "Menlo", Monaco, "Consolas", monospace;
-  font-size: 14px; color: var(--accent); letter-spacing: -.01em;
-}
-.domain-intro { font-size: 12px; color: var(--muted); margin-top: 3px; }
-.domain-price { font-size: 12px; color: var(--muted); flex-shrink: 0; }
-
-.expand-icon {
-  font-size: 12px; color: var(--muted); flex-shrink: 0;
-  transition: transform .35s ease;
-  line-height: 1;
-}
-.domain-item.active .expand-icon { transform: rotate(90deg); }
-
-/* Detail */
-.domain-detail {
-  display: grid; grid-template-rows: 0fr;
-  transition: grid-template-rows .35s ease;
-}
-.domain-detail > div { overflow: hidden; }
-.detail-content {
-  padding: 0;
-  opacity: 0; transform: translateY(-4px);
-  transition: padding .35s ease, opacity .25s ease .05s, transform .3s ease;
-  font-size: 13px; line-height: 1.7; color: var(--muted);
-}
-.domain-item.active .domain-detail { grid-template-rows: 1fr; }
-.domain-item.active .detail-content {
-  padding: 4px 0 16px;
-  opacity: 1; transform: translateY(0);
-}
-.detail-content p { margin-bottom: 10px; }
-.detail-content strong { color: var(--text); font-weight: 500; }
-.detail-content del { color: #aaa; text-decoration: line-through; }
-.detail-content code {
-  font-family: "SF Mono", "Cascadia Code", "Fira Code", "Menlo", Monaco, "Consolas", monospace;
-  background: #ddd; padding: 2px 5px; border-radius: 2px;
-  font-size: 12px; color: var(--accent);
-}
-.detail-content a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color .2s; }
-.detail-content a:hover { border-bottom-color: var(--accent); }
-
-footer {
-  padding: 16px 0 24px; text-align: center;
-  font-size: 11px; color: var(--muted); user-select: none;
-}
-footer a { color: var(--text); text-decoration: underline; text-decoration-color: var(--text); }
-footer a:hover { color: var(--accent); text-decoration-color: var(--accent); }
-
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { transition-duration: 0s !important; animation-duration: 0s !important; }
-}
-</style>
-</head>
-<body>
-<div class="container">
-
-<header>
-  <h1>NakoList</h1>
-  <div class="header-links">
-    <span onclick="toggle('mihub')">Mihub</span>
-    <span onclick="toggle('contact')">Contact</span>
-  </div>
-</header>
-
-<div class="popup" id="mihub">
-  <span class="popup-close" onclick="toggle('mihub')">×</span>
-  <div class="popup-content">
-    <div id="mihubC"></div>
-  </div>
-</div>
-
-<div class="popup" id="contact">
-  <span class="popup-close" onclick="toggle('contact')">×</span>
-  <div class="popup-content">
-    <div class="popup-note" id="popupNote" style="display:none"></div>
-    <div id="contactC"></div>
-  </div>
-</div>
-
-<div id="list"></div>
-
-<footer>Powered by <a id="footerLink" href="#">NAKOLIST</a></footer>
-
-</div>
-
+<!-- ================================================================
+     ██████  统一配置区  ██████
+     修改下方数据即可自定义整个站点
+     ================================================================ -->
 <script>
-// ═══════ 只需改这里 ═══════
-const S = {
+// ================================================================
+// 1. 站点配置
+// ================================================================
+
+var S = {
   title: 'Nakos',
   desc: 'NakoNakoNako',
   url: 'https://www.34567888.xyz',
   footer: 'NAKOLIST',
-  footerUrl: 'https://github.com/mouhuan-creator/nakolist'
+  footerUrl: 'https://github.com/mouhuan-creator/nakolist',
+  lastUpdated: '2026-09-04'
 };
-const noteText = '支持微信支付宝银行卡（包括数币）及部分虚拟货币（详情请私信），支持第三方平台交易（手续费需自付），可PUSH/给转移码;域名WHOIS及相关后缀政策请自行查询;一经售出后概不退款;标询价不代表价格高昂，仅因为我也不知道多少合适，看上了欢迎来撩～回复如若不及时，还请见谅！';
-const mihubText = `米表友链申请见 Contact 中联系方式，提供您的米表名称和链接即可。
+
+// ================================================================
+// 2. 弹窗内容（直接写，不用 \n）
+// ================================================================
+
+var noteText = `支持微信支付宝银行卡（包括数币）及部分虚拟货币（详情请私信），支持第三方平台交易（手续费需自付），可PUSH/给转移码;域名WHOIS及相关后缀政策请自行查询;一经售出后概不退款;标询价不代表价格高昂，仅因为我也不知道多少合适，看上了欢迎来撩～回复如若不及时，还请见谅！`;
+
+var mihubText = `米表友链申请见 Contact 中联系方式，提供您的米表名称和链接即可。
 本站信息：
 名称：Nakos，
 地址：https://www.34567888.xyz
@@ -181,16 +44,19 @@ const mihubText = `米表友链申请见 Contact 中联系方式，提供您的�
 [晒米网](https://shaimi.net/)
 [米袋子米表](https://mi.518.li/)
 [售米的](https://shoumi.de/)
-[彼岸临窗的米表](https://mi.023.me/)
-`;
-const C = {
-  em: ['nameholder','qq.com'],
+[彼岸临窗的米表](https://mi.023.me/)`;
+
+var C = {
+  em: ['nameholder', 'qq.com'],
   tg: 'cold_cute',
-  wx: 'REDACTED_FOR_PRIVACY',
-  ms: ''
+  wx: 'REDACTED_FOR_PRIVACY'
 };
 
-const domains = [
+// ================================================================
+// 3. 域名数据
+// ================================================================
+
+var domains = [
   {
     name: "mouhuan.com",
     price: "自用",
@@ -222,74 +88,1029 @@ const domains = [
     detail: '漂亮的二字母国别。在趣域，续费约120r/y'
   },
   {
-    name: "wr.lc",
-    price: "¥168",
-    intro: "温柔旅程",
-    detail: '四声母、二字母国别。在Dynadot，转到Porkbun后续费约130r/y'
-  },
-  {
     name: "26.nz",
     price: "询价",
     intro: "数字26",
     detail: '二数字国别。在Porkbun，续费约100r/y'
   }
 ];
+</script>
 
-// ═══════ 初始化 ═══════
-document.title = S.title;
-document.querySelector('h1').textContent = S.title;
-document.querySelector('meta[property="og:title"]').content = S.title;
-document.querySelector('meta[property="og:description"]').content = S.desc;
-document.querySelector('meta[property="og:url"]').content = S.url;
-document.getElementById('footerLink').href = S.footerUrl;
-document.getElementById('footerLink').textContent = S.footer;
+<style>
+/* ================================================================
+   一、配色系统
+   ================================================================ */
 
-// noteText 处理
-if (noteText.trim()) {
-  const noteEl = document.getElementById('popupNote');
-  noteEl.textContent = noteText;
-  noteEl.style.display = '';
+:root {
+  --bg: #f5f5f5;
+  --card-bg: #ffffff;
+  --card-border: #eaeaea;
+  --card-border-hover: #d0d0d0;
+  --text: #1a1a1a;
+  --text-secondary: #6b6b6b;
+  --text-muted: #999999;
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-hover: 0 4px 20px rgba(0, 0, 0, 0.08);
+  --accent: #3b82f6;
+  --accent-hover: #2563eb;
+  --radius: 10px;
+  --transition: 0.25s ease;
 }
 
-const contactText = `**联系方式**
-Email: [${C.em[0]}@${C.em[1]}](mailto:${C.em[0]}@${C.em[1]})
-Telegram: [@${C.tg}](https://t.me/${C.tg})
-WeChat: [${C.wx}](weixin://)`;
+[data-theme="dark"] {
+  --bg: #161615;
+  --card-bg: #1e1e1c;
+  --card-border: #2a2a28;
+  --card-border-hover: #3a3a38;
+  --text: #e8e6e0;
+  --text-secondary: #9a9892;
+  --text-muted: #6a6864;
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  --shadow-hover: 0 4px 20px rgba(0, 0, 0, 0.4);
+  --accent: #60a5fa;
+  --accent-hover: #3b82f6;
+}
 
-const fmt = t => t
-  .replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>')
-  .replace(/~~(.*?)~~/g,'<del>$1</del>')
-  .replace(/`(.*?)`/g,'<code>$1</code>')
-  .replace(/\[(.*?)\]\((.*?)\)/g,'<a href="$2" target="_blank">$1</a>')
-  .replace(/\n/g,'<br>');
+/* ================================================================
+   二、全局重置
+   ================================================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Georgia, 'Times New Roman', 'Songti SC', 'SimSun', serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  padding: 0 20px;
+  transition: background 0.4s ease, color 0.3s ease;
+}
+
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ================================================================
+   三、入场动画
+   ================================================================ */
+
+@keyframes fadeIn {
+  0%   { opacity: 0; transform: translateY(6px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.domain-item {
+  animation: fadeIn 0.5s ease forwards;
+  opacity: 0;
+}
+
+.domain-item:nth-child(1)  { animation-delay: 0.02s; }
+.domain-item:nth-child(2)  { animation-delay: 0.05s; }
+.domain-item:nth-child(3)  { animation-delay: 0.08s; }
+.domain-item:nth-child(4)  { animation-delay: 0.11s; }
+.domain-item:nth-child(5)  { animation-delay: 0.14s; }
+.domain-item:nth-child(6)  { animation-delay: 0.17s; }
+
+/* ================================================================
+   四、头部
+   ================================================================ */
+
+header {
+  padding: 32px 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--card-border);
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 12px;
+  transition: border-color 0.3s ease;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+h1 {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--text);
+  transition: color 0.3s ease;
+}
+
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  user-select: none;
+  padding: 4px 12px 4px 8px;
+  border-radius: 8px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  transition: all var(--transition);
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--text-secondary);
+}
+
+.theme-toggle:hover {
+  border-color: var(--card-border-hover);
+  box-shadow: var(--shadow);
+}
+
+.theme-toggle .icon {
+  display: block;
+  line-height: 1;
+  font-size: 18px;
+  transition: transform 0.3s ease;
+}
+
+.theme-toggle:hover .icon {
+  transform: scale(1.1);
+}
+
+.theme-toggle .label {
+  font-size: 12px;
+  color: var(--text-secondary);
+  transition: color 0.3s ease;
+}
+
+.header-links {
+  display: flex;
+  gap: 24px;
+}
+
+.header-links span {
+  font-size: 14px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: color 0.25s ease;
+  position: relative;
+  font-family: inherit;
+}
+
+.header-links span::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: var(--accent);
+  transition: width 0.3s ease;
+}
+
+.header-links span:hover {
+  color: var(--text);
+}
+
+.header-links span:hover::after {
+  width: 100%;
+}
+
+/* ================================================================
+   五、域名卡片
+   ================================================================ */
+
+.domain-item {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  margin-bottom: 10px;
+  box-shadow: var(--shadow);
+  transition: all var(--transition);
+  cursor: pointer;
+}
+
+.domain-item:hover {
+  box-shadow: var(--shadow-hover);
+  border-color: var(--card-border-hover);
+  transform: translateY(-1px);
+}
+
+.domain-item.sold {
+  opacity: 0.4;
+  order: 9999;
+}
+
+.domain-item.sold .domain-name {
+  text-decoration: line-through;
+  text-decoration-color: var(--text-muted);
+}
+
+.domain-item.sold .domain-price {
+  color: var(--text-muted);
+}
+
+.domain-item.sold:hover {
+  transform: translateY(0);
+}
+
+.domain-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.domain-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.domain-name {
+  font-family: Georgia, 'Times New Roman', 'Songti SC', 'SimSun', serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.domain-name:hover {
+  color: var(--accent);
+}
+
+.domain-intro {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-top: 2px;
+  transition: color 0.3s ease;
+  pointer-events: none;
+}
+
+.domain-price {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-secondary);
+  flex-shrink: 0;
+  pointer-events: none;
+  font-family: Georgia, 'Times New Roman', 'Songti SC', 'SimSun', serif;
+}
+
+.expand-icon {
+  font-size: 12px;
+  color: var(--text-muted);
+  flex-shrink: 0;
+  transition: transform 0.35s ease, color 0.3s ease;
+  pointer-events: none;
+  line-height: 1;
+  margin-left: 4px;
+}
+
+.domain-item.active .expand-icon {
+  transform: rotate(90deg);
+  color: var(--accent);
+}
+
+/* ================================================================
+   六、折叠详情
+   ================================================================ */
+
+.domain-detail {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s ease;
+}
+
+.domain-detail > div {
+  overflow: hidden;
+}
+
+.detail-content {
+  padding: 0;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: padding 0.3s ease,
+              opacity 0.25s ease 0.05s,
+              transform 0.3s ease;
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--text-secondary);
+}
+
+.domain-item.active .domain-detail {
+  grid-template-rows: 1fr;
+}
+
+.domain-item.active .detail-content {
+  padding: 12px 0 4px;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.detail-content p {
+  margin-bottom: 6px;
+}
+
+.detail-content strong {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.detail-content del {
+  color: var(--text-muted);
+  text-decoration: line-through;
+}
+
+.detail-content a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.25s ease, color 0.25s ease;
+}
+
+.detail-content a:hover {
+  border-bottom-color: var(--accent);
+  color: var(--accent-hover);
+}
+
+.detail-content .contact-item {
+  display: block;
+  padding: 2px 6px;
+  margin: 0 -6px;
+  cursor: pointer;
+  transition: color 0.2s ease, background 0.2s ease;
+  border-radius: 4px;
+}
+
+.detail-content .contact-item:hover {
+  color: var(--accent);
+  background: var(--bg);
+}
+
+/* ================================================================
+   七、Toast
+   ================================================================ */
+
+.toast {
+  position: fixed;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--text);
+  color: var(--bg);
+  padding: 8px 24px;
+  border-radius: 6px;
+  font-size: 14px;
+  opacity: 0;
+  animation: toastIn 1.6s ease forwards;
+  z-index: 999;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+  pointer-events: none;
+  font-family: Georgia, 'Times New Roman', 'Songti SC', 'SimSun', serif;
+}
+
+@keyframes toastIn {
+  0%   { opacity: 0; transform: translateX(-50%) translateY(12px); }
+  15%  { opacity: 1; transform: translateX(-50%) translateY(0); }
+  80%  { opacity: 1; transform: translateX(-50%) translateY(0); }
+  100% { opacity: 0; transform: translateX(-50%) translateY(-8px); }
+}
+
+/* ================================================================
+   八、弹窗
+   ================================================================ */
+
+.popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 100;
+  padding-top: 80px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+
+.popup.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.popup-content {
+  max-width: 580px;
+  margin: 0 auto;
+  padding: 32px 36px;
+  font-size: 15px;
+  line-height: 2.2;
+  color: var(--text);
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-hover);
+  border: 1px solid var(--card-border);
+  transform: translateY(16px) scale(0.98);
+  transition: transform 0.35s ease,
+              background 0.3s ease,
+              border-color 0.3s ease;
+}
+
+.popup.active .popup-content {
+  transform: translateY(0) scale(1);
+}
+
+.popup-content a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.25s ease;
+}
+
+.popup-content a:hover {
+  color: var(--accent-hover);
+}
+
+.popup-close {
+  position: absolute;
+  top: 20px;
+  right: 28px;
+  color: var(--text-muted);
+  font-size: 28px;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.3s ease;
+  line-height: 1;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+.popup-close:hover {
+  color: var(--text);
+  background: var(--bg);
+  transform: rotate(90deg);
+}
+
+.popup-note {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.7;
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--card-border);
+  transition: border-color 0.3s ease;
+}
+
+/* ================================================================
+   九、页脚
+   ================================================================ */
+
+footer {
+  padding: 28px 0 32px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-muted);
+  user-select: none;
+  border-top: 1px solid var(--card-border);
+  margin-top: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+footer a {
+  color: var(--text-secondary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.25s ease;
+}
+
+footer a:hover {
+  color: var(--text);
+}
+
+.footer-updated {
+  font-size: 12px;
+  color: var(--text-muted);
+  opacity: 0.6;
+}
+
+/* ================================================================
+   十、打印 & 响应式
+   ================================================================ */
+
+@media print {
+  body {
+    background: #fff !important;
+    color: #000 !important;
+    padding: 0 !important;
+  }
+
+  .container {
+    max-width: 100% !important;
+    padding: 20px !important;
+  }
+
+  .theme-toggle,
+  .expand-icon,
+  .popup,
+  .popup-close,
+  .toast {
+    display: none !important;
+  }
+
+  .domain-item {
+    background: #fff !important;
+    border: 1px solid #ccc !important;
+    box-shadow: none !important;
+    page-break-inside: avoid;
+    padding: 12px 16px !important;
+    margin-bottom: 8px !important;
+    transform: none !important;
+  }
+
+  .domain-item.sold {
+    opacity: 0.5 !important;
+  }
+
+  .domain-detail {
+    grid-template-rows: 1fr !important;
+  }
+
+  .detail-content {
+    opacity: 1 !important;
+    transform: none !important;
+    padding: 6px 0 0 !important;
+  }
+
+  .domain-name {
+    color: #000 !important;
+  }
+
+  header {
+    border-bottom-color: #ccc !important;
+  }
+
+  footer {
+    border-top-color: #ccc !important;
+    margin-top: 16px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 16px;
+  }
+}
+
+@media (max-width: 600px) {
+  body {
+    padding: 0 12px;
+    font-size: 15px;
+  }
+
+  .container {
+    padding: 0 12px;
+  }
+
+  header {
+    padding: 24px 0 14px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .header-left {
+    justify-content: space-between;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+
+  .domain-item {
+    padding: 14px 16px;
+    border-radius: 8px;
+  }
+
+  .domain-name {
+    font-size: 16px;
+  }
+
+  .domain-intro {
+    font-size: 13px;
+  }
+
+  .domain-price {
+    font-size: 13px;
+  }
+
+  .detail-content {
+    font-size: 13px;
+  }
+
+  .popup-content {
+    margin: 0 12px;
+    padding: 24px 18px;
+  }
+
+  .popup {
+    padding-top: 60px;
+  }
+
+  .popup-close {
+    top: 14px;
+    right: 18px;
+    font-size: 24px;
+  }
+
+  .header-links {
+    gap: 18px;
+  }
+
+  .header-links span {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 400px) {
+  .domain-item {
+    padding: 12px 14px;
+  }
+
+  .domain-name {
+    font-size: 15px;
+  }
+
+  .domain-intro {
+    font-size: 12px;
+  }
+
+  .domain-price {
+    font-size: 12px;
+  }
+
+  .header-links {
+    gap: 14px;
+  }
+
+  .header-links span {
+    font-size: 12px;
+  }
+
+  .theme-toggle {
+    font-size: 13px;
+    padding: 3px 8px 3px 6px;
+  }
+
+  .theme-toggle .icon {
+    font-size: 16px;
+  }
+
+  .theme-toggle .label {
+    font-size: 11px;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- ============================================================
+       头部
+       ============================================================ -->
+  <header>
+    <div class="header-left">
+      <h1 id="siteTitle">Nakos</h1>
+      <div class="theme-toggle" id="themeToggle" title="切换主题（T 键）">
+        <span class="icon" id="themeIcon">☀</span>
+        <span class="label" id="themeLabel">亮色</span>
+      </div>
+    </div>
+    <div class="header-links">
+      <span onclick="togglePopup('mihub')">Mihub</span>
+      <span onclick="togglePopup('contact')">Contact</span>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       弹窗
+       ============================================================ -->
+  <div class="popup" id="mihub">
+    <span class="popup-close" onclick="togglePopup('mihub')">✕</span>
+    <div class="popup-content" id="mihubC"></div>
+  </div>
+
+  <div class="popup" id="contact">
+    <span class="popup-close" onclick="togglePopup('contact')">✕</span>
+    <div class="popup-content">
+      <div class="popup-note" id="popupNote"></div>
+      <div id="contactC"></div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       域名列表
+       ============================================================ -->
+  <div id="domainList"></div>
+
+  <!-- ============================================================
+       页脚
+       ============================================================ -->
+  <footer>
+    <span>Powered by <a id="footerLink" href="#" target="_blank">NAKOLIST</a></span>
+    <span class="footer-updated" id="footerUpdated"></span>
+  </footer>
+
+</div>
+
+<script>
+/* ================================================================
+   ██████  初始化  ██████
+   以下为程序启动逻辑，一般无需修改
+   ================================================================ */
+
+// ================================================================
+// 工具函数
+// ================================================================
+
+function fmt(text) {
+  if (!text) return '';
+  return text
+    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+    .replace(/~~(.*?)~~/g, '<del>$1</del>')
+    .replace(/`(.*?)`/g, '<code>$1</code>')
+    .replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank">$1</a>')
+    .replace(/\n/g, '<br>');
+}
+
+function generateInitialSVG(initial, size) {
+  var s = size || 64;
+  var bg = '%23ffffff';
+  var fg = '%23000000';
+  var radius = s * 0.15;
+  var fontSize = s * 0.55;
+  return 'data:image/svg+xml,' +
+    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' + s + ' ' + s + '">' +
+    '<rect width="' + s + '" height="' + s + '" rx="' + radius + '" fill="' + bg + '"/>' +
+    '<text x="50%" y="52%" font-size="' + fontSize + '" ' +
+    'font-weight="700" font-family="Georgia,serif" ' +
+    'text-anchor="middle" dominant-baseline="central" fill="' + fg + '">' +
+    (initial || 'N') +
+    '</text>' +
+    '</svg>';
+}
+
+// ================================================================
+// Toast 复制反馈
+// ================================================================
+
+function showToast() {
+  var existing = document.querySelector('.toast');
+  if (existing) {
+    existing.remove();
+  }
+
+  var el = document.createElement('div');
+  el.className = 'toast';
+  el.textContent = '已复制。';
+  document.body.appendChild(el);
+
+  setTimeout(function() {
+    if (el.parentNode) {
+      el.remove();
+    }
+  }, 1700);
+}
+
+function copyToClipboard(text) {
+  if (!text || text.trim() === '') return;
+
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(showToast).catch(function() {
+      fallbackCopy(text);
+    });
+    return;
+  }
+
+  fallbackCopy(text);
+}
+
+function fallbackCopy(text) {
+  var ta = document.createElement('textarea');
+  ta.value = text;
+  ta.style.cssText = 'position:fixed;opacity:0;pointer-events:none;z-index:-1;';
+  document.body.appendChild(ta);
+
+  try {
+    ta.select();
+    ta.setSelectionRange(0, text.length);
+    if (document.execCommand('copy')) {
+      showToast();
+    }
+  } catch (err) {}
+
+  document.body.removeChild(ta);
+}
+
+// ================================================================
+// Favicon & OG Image
+// ================================================================
+
+function setupFaviconAndOG() {
+  var initial = S.title.charAt(0).toUpperCase();
+  var faviconLink = document.querySelector('link[rel="icon"]');
+  faviconLink.href = generateInitialSVG(initial, 64);
+  var ogImageMeta = document.querySelector('meta[property="og:image"]');
+  if (!ogImageMeta) {
+    ogImageMeta = document.createElement('meta');
+    ogImageMeta.setAttribute('property', 'og:image');
+    document.head.appendChild(ogImageMeta);
+  }
+  ogImageMeta.content = generateInitialSVG(initial, 400);
+}
+
+// ================================================================
+// 主题系统
+// ================================================================
+
+var THEME_MODES = ['auto', 'light', 'dark'];
+var currentMode = 'auto';
+var THEME_ICONS = {
+  auto: '↻',
+  light: '☀',
+  dark: '☾'
+};
+var THEME_LABELS = {
+  auto: '自动',
+  light: '亮色',
+  dark: '暗色'
+};
+
+function getSystemTheme() {
+  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+}
+
+function applyTheme(mode) {
+  currentMode = mode;
+  var effective = mode === 'auto' ? getSystemTheme() : mode;
+  document.documentElement.setAttribute('data-theme', effective);
+  localStorage.setItem('theme', mode);
+  document.getElementById('themeIcon').textContent = THEME_ICONS[mode] || '☀';
+  document.getElementById('themeLabel').textContent = THEME_LABELS[mode] || '亮色';
+}
+
+function cycleTheme() {
+  var idx = THEME_MODES.indexOf(currentMode);
+  applyTheme(THEME_MODES[(idx + 1) % THEME_MODES.length]);
+}
+
+var savedTheme = localStorage.getItem('theme') || 'auto';
+applyTheme(savedTheme);
+
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function() {
+  if (currentMode === 'auto') applyTheme('auto');
+});
+
+document.getElementById('themeToggle').addEventListener('click', cycleTheme);
+
+document.addEventListener('keydown', function(e) {
+  if ((e.key === 't' || e.key === 'T') && !e.ctrlKey && !e.metaKey && !e.altKey) {
+    e.preventDefault();
+    cycleTheme();
+  }
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.popup.active').forEach(function(p) {
+      p.classList.remove('active');
+    });
+  }
+});
+
+// ================================================================
+// 渲染域名列表
+// ================================================================
+
+function renderDomains() {
+  var container = document.getElementById('domainList');
+  if (!container) return;
+
+  var sorted = domains.slice().sort(function(a, b) {
+    return (a.price === '已售' ? 1 : 0) - (b.price === '已售' ? 1 : 0);
+  });
+
+  var html = '';
+  for (var i = 0; i < sorted.length; i++) {
+    var d = sorted[i];
+    var isSold = d.price === '已售';
+    html += '<div class="domain-item' + (isSold ? ' sold' : '') + '">';
+    html += '  <div class="domain-header">';
+    html += '    <div class="domain-main">';
+    html += '      <a href="https://' + d.name + '" target="_blank" class="domain-name" rel="noopener noreferrer">' + d.name + '</a>';
+    html += '      <div class="domain-intro">' + d.intro + '</div>';
+    html += '    </div>';
+    html += '    <span class="domain-price">' + d.price + '</span>';
+    html += '    <span class="expand-icon">▶</span>';
+    html += '  </div>';
+    html += '  <div class="domain-detail">';
+    html += '    <div>';
+    html += '      <div class="detail-content">' + fmt(d.detail) + '</div>';
+    html += '    </div>';
+    html += '  </div>';
+    html += '</div>';
+  }
+  container.innerHTML = html;
+}
+
+// ================================================================
+// 交互事件
+// ================================================================
+
+document.addEventListener('click', function(e) {
+  // 域名跳转
+  if (e.target.closest('.domain-name')) {
+    return;
+  }
+
+  // 点击联系方式复制
+  var contactItem = e.target.closest('.contact-item');
+  if (contactItem) {
+    var text = contactItem.getAttribute('data-copy');
+    if (text) {
+      e.stopPropagation();
+      copyToClipboard(text);
+    }
+    return;
+  }
+
+  // 展开/折叠
+  var header = e.target.closest('.domain-header');
+  if (header) {
+    var item = header.closest('.domain-item');
+    if (item) {
+      var wasActive = item.classList.contains('active');
+      document.querySelectorAll('.domain-item.active').forEach(function(el) {
+        if (el !== item) el.classList.remove('active');
+      });
+      if (!wasActive) {
+        item.classList.add('active');
+      } else {
+        item.classList.remove('active');
+      }
+    }
+    return;
+  }
+
+  // 点击弹窗外部关闭
+  var popup = e.target.closest('.popup.active');
+  if (popup && !e.target.closest('.popup-content')) {
+    popup.classList.remove('active');
+  }
+});
+
+// ================================================================
+// 弹窗控制
+// ================================================================
+
+function togglePopup(id) {
+  var el = document.getElementById(id);
+  if (el) el.classList.toggle('active');
+}
+
+var contactText = '**联系方式**\nEmail: [nameholder@qq.com](mailto:nameholder@qq.com)\nTelegram: [@cold_cute](https://t.me/cold_cute)\nWeChat: [REDACTED_FOR_PRIVACY](weixin://)';
 
 document.getElementById('mihubC').innerHTML = fmt(mihubText);
 document.getElementById('contactC').innerHTML = fmt(contactText);
+document.getElementById('popupNote').textContent = noteText;
 
-const list = document.getElementById('list');
-domains.forEach(d => {
-  const el = document.createElement('div');
-  el.className = 'domain-item';
-  el.innerHTML = `<div class="domain-header"><div class="domain-main"><div class="domain-name">${d.name}</div><div class="domain-intro">${d.intro}</div></div><span class="domain-price">${d.price}</span><span class="expand-icon">▶</span></div><div class="domain-detail"><div><div class="detail-content">${fmt(d.detail)}</div></div></div>`;
-  list.appendChild(el);
-});
+// ================================================================
+// 页脚 & 站点信息
+// ================================================================
 
-list.addEventListener('click', e => {
-  const h = e.target.closest('.domain-header');
-  if (!h) return;
-  const item = h.parentElement;
-  const was = item.classList.contains('active');
-  list.querySelectorAll('.domain-item.active').forEach(el => el.classList.remove('active'));
-  if (!was) item.classList.add('active');
-});
+document.title = S.title;
+document.getElementById('siteTitle').textContent = S.title;
+document.getElementById('footerLink').href = S.footerUrl;
+document.getElementById('footerLink').textContent = S.footer;
+document.getElementById('footerUpdated').textContent = '更新于 ' + S.lastUpdated;
 
-function toggle(id) {
-  document.getElementById(id).classList.toggle('active');
-}
-document.addEventListener('click', e => {
-  const p = e.target.closest('.popup.active');
-  if (p && !e.target.closest('.popup-content')) p.classList.remove('active');
-});
+// ================================================================
+// 启动
+// ================================================================
+
+setupFaviconAndOG();
+renderDomains();
+
+console.log('✅ NakoList 已加载，域名数: ' + domains.length);
 </script>
+
 </body>
 </html>
